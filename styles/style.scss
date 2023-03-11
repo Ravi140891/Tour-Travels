@@ -14,40 +14,62 @@
 
 $blue: #29d9d5;
 $black: #111;
-$white:#fff;
+$white: #fff;
 $light-color: #aaa;
 $bg-color: #222;
-$black-bg: rgba(17,17,17,.7);
-$border: .2rem solid $blue;
+$black-bg: rgba(17, 17, 17, 0.7);
+$border: 0.2rem solid $blue;
+
+@mixin grid($val) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+  gap: 1.5rem;
+}
+
 html {
   font-size: 62.5%;
   overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-padding-top: 9rem;
 
-  &::-webkit-scrollbar{
+  &::-webkit-scrollbar {
     width: 1rem;
   }
 
-    &::-webkit-scrollbar-track {
-      background: $black;
-    }
+  &::-webkit-scrollbar-track {
+    background: $black;
+  }
 
-        &::-webkit-scrollbar-thumb {
-          background: $blue;
-        }
+  &::-webkit-scrollbar-thumb {
+    background: $blue;
+  }
 }
 
-section{
-  padding: 3rem 9%;
-}
-
-body{
+body {
   background: $black;
   overflow-x: hidden;
 }
 
-.btn{
+section {
+  padding: 3rem 9%;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  span {
+    color: $blue;
+    font-size: 2rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+    color: $white;
+  }
+}
+
+.btn {
   margin-top: 1rem;
   display: inline-block;
   padding: 1rem 3rem;
@@ -58,12 +80,12 @@ body{
   cursor: pointer;
   background: none;
 
-  &:hover{
+  &:hover {
     background: $blue;
     color: $black;
   }
 }
-.header{
+.header {
   position: fixed;
   top: 0;
   left: 0;
@@ -75,44 +97,45 @@ body{
   justify-content: space-between;
   padding: 1.5rem 9%;
 
-  .navbar a{
+  .navbar a {
     font-size: 1.7rem;
     color: $light-color;
     display: inline-block;
     margin: 0 1rem;
 
-    &:hover{
+    &:hover {
       color: $blue;
     }
   }
-  .btn{
+  .btn {
     margin-top: 0;
   }
 }
-.logo{
+.logo {
   font-size: 2.5rem;
   color: white;
   font-weight: bolder;
 
-  i{
+  i {
     color: $blue;
-    padding-right: .5rem;
+    padding-right: 0.5rem;
   }
 }
 
-#menu-btn{
+#menu-btn {
   font-size: 2.5rem;
   color: $white;
   cursor: pointer;
   display: none;
 }
 
-.home{
+.home {
   margin: 0 auto;
   margin-top: 9rem;
   width: 90%;
   border-radius: 1rem;
-  background: linear-gradient($black-bg, $black-bg), url('../images/home-bg.avif') no-repeat;
+  background: linear-gradient($black-bg, $black-bg),
+    url("../images/home-bg.avif") no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -121,21 +144,21 @@ body{
   justify-content: center;
   padding-bottom: 5rem;
 
-  .content{
+  .content {
     text-align: center;
 
-    span{
+    span {
       font-weight: bolder;
       color: transparent;
-      -webkit-text-stroke: .1rem $white;
+      -webkit-text-stroke: 0.1rem $white;
       font-size: 4vw;
       display: block;
     }
-    h3{
+    h3 {
       font-size: 6vw;
       color: $white;
     }
-    p{
+    p {
       max-width: 60rem;
       margin: 1rem auto;
       font-size: 1.4rem;
@@ -145,29 +168,29 @@ body{
   }
 }
 
-.book-form{
+.book-form {
   width: 80%;
   margin: 1rem auto;
   margin-top: -5rem;
   background: $bg-color;
   border-radius: 1rem;
-  box-shadow: 0 .5rem 1rem rgba(17,17,17,.3);
+  box-shadow: 0 0.5rem 1rem rgba(17, 17, 17, 0.3);
   padding: 3rem 2rem;
 
-  form{
+  form {
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
     gap: 1.5rem;
 
-    .inputBox{
+    .inputBox {
       flex: 1 1 25rem;
 
-      span{
+      span {
         font-size: 1.4rem;
         color: $light-color;
       }
-      input{
+      input {
         width: 100%;
         padding: 1.2rem 1.4rem;
         border-radius: 5rem;
@@ -180,92 +203,145 @@ body{
       }
     }
 
-    .btn{
+    .btn {
       flex: 1 1 15rem;
     }
   }
 }
 
-.about{
+.about {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
   margin-top: 5rem;
 
-  .video-container{
+  .video-container {
     flex: 1 1 42rem;
 
-    video{
+    video {
       border-radius: 1rem;
       width: 100%;
     }
 
-    .controls{
+    .controls {
       text-align: center;
       padding: 2rem 0;
 
-      span{
+      span {
         display: inline-block;
         height: 2rem;
         width: 2rem;
         border-radius: 50%;
         background: $white;
         cursor: pointer;
-        margin: .7rem;
+        margin: 0.7rem;
 
-        &:hover{
+        &:hover {
           background: $blue;
         }
       }
     }
   }
-    .content {
-      flex: 1 1 42rem;
-      margin-bottom: 5rem;
+  .content {
+    flex: 1 1 42rem;
+    margin-bottom: 5rem;
 
-      span{
-        color: $blue;
-        font-size: 2rem;
-      }
-            h3 {
-              color: $white;
-              font-size: 4rem;
-              margin-top: .5rem;
-            }
-                        p {
-                          padding: 1rem 0;
-                          margin: 1rem auto;
-                          font-size: 1.4rem;
-                          color: $light-color;
-                          line-height: 2;
-                        }
+    span {
+      color: $blue;
+      font-size: 2rem;
     }
+    h3 {
+      color: $white;
+      font-size: 4rem;
+      margin-top: 0.5rem;
+    }
+    p {
+      padding: 1rem 0;
+      margin: 1rem auto;
+      font-size: 1.4rem;
+      color: $light-color;
+      line-height: 2;
+    }
+  }
 }
 
+.destination .box-container {
+  @include grid(27rem);
 
+  .box {
+    border-radius: 1rem;
+    overflow: hidden;
+    background: $bg-color;
 
-@media (max-width:991px){
-  html{
+    &:hover img {
+      transform: scale(1.1);
+    }
+
+    .image {
+      height: 20rem;
+      overflow: hidden;
+      width: 100%;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .content {
+      padding: 2rem;
+      text-align: center;
+
+      h3 {
+        font-size: 2rem;
+        color: $white;
+      }
+
+      p {
+        padding: 1rem 0;
+        margin: 1rem auto;
+        font-size: 1.4rem;
+        color: $light-color;
+        line-height: 2;
+      }
+
+      a {
+        font-size: 1.7rem;
+        color: $blue;
+
+        &:hover i {
+          padding-left: 1rem;
+        }
+
+        i {
+          padding-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  html {
     font-size: 55%;
   }
-  .header{
+  .header {
     padding: 1.5rem 2rem;
   }
 
-    section {
-      padding: 3rem 2rem;
-    }
+  section {
+    padding: 3rem 2rem;
+  }
 }
 
-@media (max-width:768px){
-
+@media (max-width: 768px) {
   #menu-btn {
-      display: inline-block;
-    }
-  .header{
-
-    .navbar{
+    display: inline-block;
+  }
+  .header {
+    .navbar {
       position: absolute;
       top: 99%;
       left: 0;
@@ -273,37 +349,37 @@ body{
       background: $bg-color;
       clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 
-      &.active{
+      &.active {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       }
 
-      a{
+      a {
         margin: 2rem;
         font-size: 2rem;
         display: block;
       }
     }
   }
-  .home{
+  .home {
     margin-top: 10rem;
 
-    .content{
-      span{
+    .content {
+      span {
         font-size: 8vw;
       }
-      h3{
+      h3 {
         font-size: 9vw;
       }
     }
   }
 }
 
-@media (max-width:450px) {
+@media (max-width: 450px) {
   html {
     font-size: 50%;
   }
-  
-  .about .content h3{
+
+  .about .content h3 {
     font-size: 3.5rem;
   }
 }
